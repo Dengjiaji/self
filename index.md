@@ -252,7 +252,7 @@ hide:
                     Role: Researcher @ Tongyi Lab<br>
                     Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
                     Interests: Agent Systems, Agentic RL, FinTech<br>
-                    Email: dengjiaji@foxmail.com
+                    Email: dengjiaji@gmail.com
                 </div>
             </div>
 
@@ -348,7 +348,7 @@ hide:
             Role: Researcher @ Tongyi Lab, Alibaba<br>
             Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
             Interests: Agent Systems, Agentic RL, FinTech<br>
-            Email: dengjiaji@foxmail.com<br>
+            Email: dengjiaji@gmail.com<br>
             `,
 
             
