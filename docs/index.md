@@ -250,7 +250,9 @@ hide:
                 <div class="cmd-output">
                     Name: Jiaji Deng (邓佳佶)<br>
                     Role: Researcher @ Tongyi Lab<br>
-                    Focus: Agent Systems, Agentic RL, FinTech
+                    Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
+                    Interests: Agent Systems, Agentic RL, FinTech<br>
+                    Email: dengjiaji@foxmail.com
                 </div>
             </div>
 
@@ -343,8 +345,12 @@ hide:
         
         whois: () => `
             Name: Jiaji Deng (邓佳佶)<br>
-            Role: Researcher @ Tongyi Lab<br>
-            Focus: Agent Systems, Agentic RL, FinTech`,
+            Role: Researcher @ Tongyi Lab, Alibaba<br>
+            Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
+            Interests: Agent Systems, Agentic RL, FinTech<br>
+            Email: dengjiaji@foxmail.com<br>
+            `,
+
             
         evotraders: () => `
             <h6>[ PROJECT: EvoTraders ]</h6>
