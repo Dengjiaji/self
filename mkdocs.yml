@@ -1,14 +1,15 @@
-site_name: blog
+site_name: DENGJIAJI ✦ BLOG
 site_url: https://dengjiaji.github.io/self/
 site_description: "dengjiaji's blog"
 repo_url: https://dengjiaji.github.io/self/
-repo_name: blog
+repo_name: self
 
 theme:
   name: shadcn
-  image: figure/logo.png
+  image: figure/icon.jpg
   show_stargazers: true
   locale: zh_CN
+  show_datetime: true
 
 plugins:
   - search
@@ -16,6 +17,9 @@ plugins:
 
 nav:
   - about me: index.md
+  - blog:
+      # - Archives: blog/index.md
+      - Proactive Agents : blog/2025-11-19.md
 
 markdown_extensions:
   admonition:
