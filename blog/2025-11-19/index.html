@@ -601,21 +601,14 @@
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
     <p>传统的 LLM 应用，无论是 ChatGPT 还是 RAG 问答，本质都是<strong>响应式（Reactive）</strong>的：用户提出一个 Query，系统给出一个 Response。一旦交互结束，Agent 的记忆和生命周期也就终止了。</p>
-<p>在更多时候，我们希望构建的Agents是proactive的：Agent可以持续地、在真实时间线上一直运行，它可以：</p>
+<p>在更多时候，我们希望构建的 Agent 是 <strong>Proactive</strong> 的：Agent 可以持续地、在真实时间线上一直运行，它可以：</p>
 <ul>
-<li>
-<p>持续地监控环境，并做出相应的反应；</p>
-</li>
-<li>
-<p>它拥有持续的记忆，能够积累经验；</p>
-</li>
-<li>
-<p>它能根据环境变化，主动决定下一步行动；</p>
-</li>
+<li>持续地监控环境，并做出相应的反应；</li>
+<li>拥有持续的记忆，能够积累经验；</li>
+<li>根据环境变化，主动决定下一步行动。</li>
 </ul>
-<p>在这种逻辑下，Agent就不再是按照Request-Response的方式被构建，而是需要一个基于循环和状态的 Agent 系统。</p>
-<p>「触发」（Trigger），也可以认为是「定时」（scheduler）成为了Agent最重要的能力。</p>
-<p>Agent 的自主性来自于它对这些不同类型触发器的监听和响应能力。</p>
+<p>在这种逻辑下，Agent 就不再是按照 Request-Response 的方式被构建，而是需要一个基于循环和状态的 Agent 系统。</p>
+<p><strong>“触发”（Trigger）</strong>，也可以认为是<strong>“定时”（Scheduler）</strong>成为了 Agent 最重要的能力。Agent 的自主性来自于它对这些不同类型触发器的监听和响应能力。</p>
 <h2 id="trigger-types">Trigger Types</h2>
 <h3 id="environmental-triggers">Environmental Triggers</h3>
 <p>这类触发器直接来源于环境数据流的改变，Agent 必须具备<strong>“订阅”（Subscription）</strong>信息的能力。</p>
@@ -629,19 +622,19 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">突发事件触发 (Event-Driven)</td>
-<td style="text-align: left;">重要的、无法预测的外部信息突然出现。此前的user query 就可以理解为一类特殊的 event。</td>
-<td style="text-align: left;">1. 突发新闻：某公司 CEO 辞职、央行降息公告。<br>2. 新任务发布：预测系统发布了一个新的预测挑战。</td>
+<td style="text-align: left;"><strong>突发事件触发 (Event-Driven)</strong></td>
+<td style="text-align: left;">重要的、无法预测的外部信息突然出现。此前的 User Query 就可以理解为一类特殊的 Event。</td>
+<td style="text-align: left;">1. <strong>突发新闻</strong>：某公司 CEO 辞职、央行降息公告。<br>2. <strong>新任务发布</strong>：预测系统发布了一个新的预测挑战。</td>
 </tr>
 <tr>
-<td style="text-align: left;">阈值/信号触发 (Threshold-Driven)</td>
+<td style="text-align: left;"><strong>阈值/信号触发 (Threshold-Driven)</strong></td>
 <td style="text-align: left;">监测到的数据指标超过了预设的临界值，表明市场可能发生变化。</td>
-<td style="text-align: left;">1. 价格波动：某股票 5 分钟内价格波动超过 2%。<br>2. 情感极值：市场情绪指数（Sentiment Index）跌至极低水平。</td>
+<td style="text-align: left;">1. <strong>价格波动</strong>：某股票 5 分钟内价格波动超过 2%。<br>2. <strong>情感极值</strong>：市场情绪指数（Sentiment Index）跌至极低水平。</td>
 </tr>
 <tr>
-<td style="text-align: left;">数据到达触发 (Arrival-Driven)</td>
+<td style="text-align: left;"><strong>数据到达触发 (Arrival-Driven)</strong></td>
 <td style="text-align: left;">预定的、周期性的数据包到达，需要立即处理。</td>
-<td style="text-align: left;">1. 财报发布：季度或年度财报文件到达。<br>2. 宏观数据：每月 CPI 或失业率报告发布。</td>
+<td style="text-align: left;">1. <strong>财报发布</strong>：季度或年度财报文件到达。<br>2. <strong>宏观数据</strong>：每月 CPI 或失业率报告发布。</td>
 </tr>
 </tbody>
 </table></div>
@@ -650,21 +643,21 @@
 <div class="table-wrapper"><table>
 <thead>
 <tr>
-<th style="text-align: left;">新的子类型</th>
+<th style="text-align: left;">子类型</th>
 <th style="text-align: left;">描述</th>
 <th style="text-align: left;">示例（股票市场预测 Agent）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">配置修改触发 (Configuration Change)</td>
+<td style="text-align: left;"><strong>配置修改触发 (Configuration Change)</strong></td>
 <td style="text-align: left;">外部开发者或管理员修改了 Agent 的核心代码、工具集或 LLM 模型参数。</td>
-<td style="text-align: left;">1. 代码库更新：外部更新了模型训练脚本 (model_train.py)。<br>2. 工具集变更：新增了一个调用外部风控 API 的工具。</td>
+<td style="text-align: left;">1. <strong>代码库更新</strong>：外部更新了模型训练脚本 (<code>model_train.py</code>)。<br>2. <strong>工具集变更</strong>：新增了一个调用外部风控 API 的工具。</td>
 </tr>
 <tr>
-<td style="text-align: left;">记忆完整性触发 (Memory Integrity)</td>
+<td style="text-align: left;"><strong>记忆完整性触发 (Memory Integrity)</strong></td>
 <td style="text-align: left;">外部操作导致 Agent 的长期记忆库发生变化，或系统检测到记忆数据异常。</td>
-<td style="text-align: left;">1. 外部写入：管理员手动向 Agent 的向量数据库中导入了一批新的历史数据。<br>2. 数据损坏：数据库报告关键记忆分区出现异常或写入失败。</td>
+<td style="text-align: left;">1. <strong>外部写入</strong>：管理员手动向 Agent 的向量数据库中导入了一批新的历史数据。<br>2. <strong>数据损坏</strong>：数据库报告关键记忆分区出现异常或写入失败。</td>
 </tr>
 </tbody>
 </table></div>
@@ -680,35 +673,29 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">固定周期触发 (Cron Job)</td>
+<td style="text-align: left;"><strong>固定周期触发 (Cron Job)</strong></td>
 <td style="text-align: left;">固定的、不可更改的维护和报告周期。</td>
-<td style="text-align: left;">1. 日常维护：每日凌晨 3 点进行数据备份和日志清理。<br>2. 定期报告：每周五下午 4 点生成市场周报。</td>
+<td style="text-align: left;">1. <strong>日常维护</strong>：每日凌晨 3 点进行数据备份和日志清理。<br>2. <strong>定期报告</strong>：每周五下午 4 点生成市场周报。</td>
 </tr>
 <tr>
-<td style="text-align: left;">LLM 自主调度 (Self-Scheduling)</td>
+<td style="text-align: left;"><strong>LLM 自主调度 (Self-Scheduling)</strong></td>
 <td style="text-align: left;">Agent 结合当前环境和任务，给自己设置的临时或未来的提醒。</td>
-<td style="text-align: left;">1. 延迟分析：Agent 决定：“我需要等待明天开盘后的 30 分钟市场稳定后再进行预测”，于是给自己设置一个 24 小时 30 分钟后的提醒。<br>2. 复盘提醒：Agent 决定：“这次预测的结果将在 3 天后揭晓，请在 3 天后触发一次反思任务。”</td>
+<td style="text-align: left;">1. <strong>延迟分析</strong>：Agent 决定：“我需要等待明天开盘后的 30 分钟市场稳定后再进行预测”，于是给自己设置一个 24 小时 30 分钟后的提醒。<br>2. <strong>复盘提醒</strong>：Agent 决定：“这次预测的结果将在 3 天后揭晓，请在 3 天后触发一次反思任务。”</td>
 </tr>
 </tbody>
 </table></div>
-<h2 id="self-schedulingsubscribe">Self-Scheduling/Subscribe</h2>
-<p>“自主调度”是实现proactive agent的一种形式，它要求 Agent 不仅能对外界信息做出反应，还能根据推理安排未来的行动。</p>
+<h2 id="self-scheduling-subscription">Self-Scheduling &amp; Subscription</h2>
+<p>“自主调度”是实现 Proactive Agent 的一种形式，它要求 Agent 不仅能对外界信息做出反应，还能根据推理安排未来的行动。</p>
 <p>LLM 需要一些工具，使其能够像使用 Python 或 API 一样，自主创建任务/触发机制。</p>
-<div class="arithmatex">\[\text{Schedule\_Task}(\text{Task\_ID}, \text{Description}, \text{Target\_Time}, \text{Priority})\]</div>
-<p>订阅则是允许LLM像agentic 操作memory一样操作订阅信息：</p>
+<div class="arithmatex">\[
+\text{Schedule\_Task}(\text{Task\_ID}, \text{Description}, \text{Target\_Time}, \text{Priority})
+\]</div>
+<p>订阅则是允许 LLM 像 Agentic 操作 Memory 一样操作订阅信息：</p>
 <ul>
-<li>
-<p>add_subscription</p>
-</li>
-<li>
-<p>delete_subscription</p>
-</li>
-<li>
-<p>update_subscription </p>
-</li>
-<li>
-<p>list_subscription</p>
-</li>
+<li><code>add_subscription</code></li>
+<li><code>delete_subscription</code></li>
+<li><code>update_subscription</code></li>
+<li><code>list_subscription</code></li>
 </ul>
 <p><strong>触发流程：</strong></p>
 <ol>
@@ -830,10 +817,10 @@
         
 
         
-        <a href="#self-schedulingsubscribe"
+        <a href="#self-scheduling-subscription"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Self-Scheduling/Subscribe
+            Self-Scheduling &amp; Subscription
         </a>
         
 
