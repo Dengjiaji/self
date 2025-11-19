@@ -1,0 +1,42 @@
+site_name: blog
+site_url: https://dengjiaji.github.io/self/
+site_description: "dengjiaji's blog"
+repo_url: https://dengjiaji.github.io/self/
+repo_name: blog
+
+theme:
+  name: shadcn
+  image: figure/logo.png
+  show_stargazers: true
+  locale: zh_CN
+
+plugins:
+  - search
+  - excalidraw
+
+nav:
+  - about me: index.md
+
+markdown_extensions:
+  admonition:
+  codehilite:
+  fenced_code:
+  footnotes:
+  extra:
+  pymdownx.blocks.details:
+  pymdownx.tabbed:
+  pymdownx.blocks.tab:
+    combine_header_slug: true
+    separator: ___
+  pymdownx.progressbar:
+  pymdownx.snippets:
+  pymdownx.arithmatex:
+    generic: true
+  shadcn.extensions.echarts.alpha:
+  shadcn.extensions.codexec:
+  shadcn.extensions.iconify:
+
+# pip install mkdocs-shadcn
+# mkdocs build
+# mkdocs serve
+# mkdocs gh-deploy --force
