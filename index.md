@@ -524,7 +524,7 @@ hide:
         termHeader.style.opacity = '0';
         
         await new Promise(r => setTimeout(r, 500));
-        await typeText("Do you know MATRIX?", 80, true);
+        await typeText("Do you know THE MATRIX?", 80, true);
         await new Promise(r => setTimeout(r, 500));
         
         const choiceDiv = document.createElement('div');
@@ -615,7 +615,7 @@ hide:
         termHeader.querySelector('span').textContent = 'user@tongyi-lab:~';
         
         // ASCII art as raw text for typing
-        const asciiArt = `  ____  ____   ____  ____  ____      ___      ___  ____    ____ 
+        const asciiArt = `   ____  ____   ____  ____  ____      ___      ___  ____    ____ 
  |    ||    | /    ||    ||    |    |   \\    /  _]|    \\  /    |
  |__  | |  | |  o  ||__  | |  |     |    \\  /  [_ |  _  ||   __|
  __|  | |  | |     |__|  | |  |     |  D  ||    _]|  |  ||  |  |
