@@ -524,7 +524,7 @@ hide:
         termHeader.style.opacity = '0';
         
         await new Promise(r => setTimeout(r, 500));
-        await typeText("Do you know MATRIX?", 80, true);
+        await typeText("Do you know THE MATRIX?", 80, true);
         await new Promise(r => setTimeout(r, 500));
         
         const choiceDiv = document.createElement('div');
