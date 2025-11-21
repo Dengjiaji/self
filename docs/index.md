@@ -18,17 +18,15 @@ hide:
         --term-font: 'JetBrains Mono', 'Courier New', monospace;
     }
     
-    /* Scope font to terminal only, protecting site nav */
+    /* Scope font to terminal only */
     .terminal-container {
         font-family: var(--term-font) !important;
-        max-width: 840px;
-        margin: 0 auto;
+        max-width: 700px;
+        margin: 5vh auto;
         color: var(--term-fg);
         line-height: 1.6;
         position: relative;
         z-index: 1;
-        min-height: 80vh;
-        padding-bottom: 100px;
     }
 
     .terminal-container * {
@@ -43,7 +41,7 @@ hide:
         width: 100%;
         height: 100%;
         z-index: -1;
-        opacity: 0.06;
+        opacity: 0.04;
         pointer-events: none;
     }
 
@@ -51,8 +49,10 @@ hide:
     .term-window {
         border: 2px solid #000;
         background: rgba(255, 255, 255, 0.98);
-        box-shadow: 15px 15px 0px rgba(0,0,0,0.1);
-        margin-bottom: 40px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
     
     .term-header {
@@ -68,11 +68,28 @@ hide:
         cursor: default;
         text-transform: uppercase;
         letter-spacing: 1px;
+        opacity: 0; /* Hidden initially */
+        transition: opacity 0.5s;
     }
 
     .term-body {
-        padding: 25px;
+        padding: 20px;
+        flex: 1;
         overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
+    .term-body::-webkit-scrollbar {
+        width: 8px;
+    }
+    .term-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    .term-body::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    .term-body::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 
     /* ASCII & Typography */
@@ -81,17 +98,9 @@ hide:
         white-space: pre;
         line-height: 1.1;
         margin-bottom: 20px;
-        overflow-x: auto;
-        font-size: 0.75em;
+        font-size: 0.70em;
         color: #000;
-    }
-
-    .terminal-container h3 {
-        font-size: 1.1em;
-        margin: 0 0 10px 0;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: #000;
+        display: inline-block;
     }
 
     .terminal-container a {
@@ -120,20 +129,19 @@ hide:
         font-weight: bold;
     }
     
-    /* Input Line Construction */
     .input-line {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        position: relative; /* Context for absolute input */
+        position: relative;
+        min-height: 24px;
     }
     
-    /* Fix: Input positioned invisibly over the area to prevent scroll jumps */
     #term-input {
         position: absolute;
         opacity: 0;
-        height: 100%; /* Cover the line height */
-        width: 1px; /* Minimal width */
+        height: 100%;
+        width: 1px;
         bottom: 0;
         left: 0;
         z-index: -1;
@@ -157,6 +165,91 @@ hide:
         animation: blink 1s step-end infinite;
         vertical-align: middle;
     }
+    
+    /* Intro & Effects */
+    .intro-text {
+        color: #008000;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    /* Rabbit - Clickable */
+    .rabbit-container {
+        margin: 30px 0;
+        color: #000;
+        font-weight: bold;
+        white-space: pre;
+        font-size: 14px;
+        cursor: pointer;
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+    
+    .rabbit-container:hover {
+        transform: scale(1.1);
+    }
+
+    /* Pills - Terminal Style */
+    .pill-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .pill {
+        font-family: var(--term-font);
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+        user-select: none;
+        border-bottom: 2px solid transparent;
+        padding: 5px 10px;
+        font-weight: bold;
+    }
+    
+    .pill:hover {
+        background: #000;
+        color: #fff !important;
+        border-bottom: 2px solid #000;
+    }
+    
+    .pill-red {
+        color: #d32f2f;
+        border-bottom: 2px solid #d32f2f;
+    }
+    
+    .pill-blue {
+        color: #1976d2;
+        border-bottom: 2px solid #1976d2;
+    }
+    
+    .pill-quote {
+        text-align: center;
+        color: #000;
+        margin-bottom: 20px;
+        font-size: 1em;
+        line-height: 1.6;
+    }
+    
+    .choice-link {
+        font-family: var(--term-font);
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s;
+        user-select: none;
+        padding: 5px 10px;
+        display: inline-block;
+        color: #008000;
+        border-bottom: 2px solid #008000;
+    }
+    
+    .choice-link:hover {
+        background: #008000;
+        color: #fff;
+    }
 
     @keyframes blink {
         0%, 100% { opacity: 1; }
@@ -175,24 +268,18 @@ hide:
 
     .cmd-output {
         margin-left: 0;
-        margin-bottom: 25px;
+        margin-bottom: 15px;
         padding-left: 0; 
         animation: fadeIn 0.2s ease-in-out;
     }
     
     .command-history-item {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(5px); }
         to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .grid-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
     }
     
     .term-list-item {
@@ -206,78 +293,61 @@ hide:
     }
 
     @media (max-width: 600px) {
-        .grid-2 { grid-template-columns: 1fr; }
         .ascii-art { font-size: 0.5em; }
+        .pill-container { gap: 30px; }
     }
 </style>
 
-<!-- Canvas for Matrix Effect -->
 <canvas id="matrix-bg"></canvas>
 
 <div class="terminal-container">
-
-    <!-- Main Terminal Window -->
     <div class="term-window">
-        <div class="term-header">
-            <span>user@tongyi-lab:~</span>
+        <div class="term-header" id="term-header">
+            <span>system@matrix</span>
             <span>zsh</span>
         </div>
         <div class="term-body" id="terminal-output-area">
-            
-            <!-- Initial Welcome Message -->
-            <div class="command-history-item">
-<div class="ascii-art">
-  ____  ____   ____  ____  ____      ___      ___  ____    ____ 
- |    ||    | /    ||    ||    |    |   \    /  _]|    \  /    |
- |__  | |  | |  o  ||__  | |  |     |    \  /  [_ |  _  ||   __|
- __|  | |  | |     |__|  | |  |     |  D  ||    _]|  |  ||  |  |
-/  |  | |  | |  _  /  |  | |  |     |     ||   [_ |  |  ||  |_ |
-\  `  | |  | |  |  \  `  | |  |     |     ||     ||  |  ||     |
- \____j|____||__|__|\____||____|    |_____||_____||__|__||___,_|
-                                                                        
-                                                
-</div>
-                <div style="margin-bottom: 20px; color: #666;">
-                "All boundaries are conventions, waiting to be transcended." <br>
-                -- Cloud Atlas
-                </div>
-                <div>Type <span class="tag">help</span> to see available commands.</div>
-            </div>
-
-            <!-- Static First Command -->
-            <div class="command-history-item">
-                <div><span class="prompt">➜  ~</span> <span class="user-input-text">whois jiaji</span></div>
-                <div class="cmd-output">
-                    Name: Jiaji Deng (邓佳佶)<br>
-                    Role: Researcher @ Tongyi Lab<br>
-                    Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
-                    Interests: Agent Systems, Agentic RL, FinTech<br>
-                    Email: dengjiaji@gmail.com
-                </div>
-            </div>
-
-            <!-- Dynamic content will be typed here by JS -->
-
+            <!-- Content injected by JS -->
         </div>
 
-        <!-- Interactive Input Line -->
-        <div style="padding: 0 25px 25px 25px;">
+        <!-- Input Area -->
+        <div style="padding: 0 20px 20px 20px; display:none;" id="input-area-wrapper">
             <div class="input-line" id="input-line-container">
-                <span class="prompt">➜  ~</span>
+                <span class="prompt" id="prompt-span">➜  ~</span>
                 <span id="input-display"></span><span class="cursor-block"></span>
                 <input type="text" id="term-input" autocomplete="off" spellcheck="false">
             </div>
         </div>
     </div>
 
-    <div style="text-align: center; color: #999; font-size: 0.8em; margin-top: 20px;">
+    <div style="text-align: center; color: #999; font-size: 0.8em; margin-top: 10px;">
         session_id: <span id="session-id"></span> • host: github.io
     </div>
-
 </div>
 
 <script>
-    // --- 1. Matrix Background Effect ---
+    // --- CONFIGURATION ---
+    const PROFILE = {
+        name: "Jiaji Deng (邓佳佶)",
+        role: "Researcher @ Tongyi Lab, Alibaba",
+        edu: "PKU B.S. Math & Finance → USC M.S. Mathematical Finance",
+        interests: "Agent Systems, Agentic RL, FinTech",
+        email: "dengjiaji@gmail.com",
+        intro_quote: '"All boundaries are conventions, waiting to be transcended." -- Cloud Atlas'
+    };
+
+    // Blogs updated from mkdocs.yml
+    const BLOGS = [
+        { title: "Proactive Agents", path: "blog/2025-11-19/" }
+    ];
+
+    const PUBLICATIONS = [
+        { title: "[PROFILE] Google Scholar", url: "https://scholar.google.com/citations?hl=zh-CN&user=hI2BbTMAAAAJ" },
+        { title: "[BOOK] 数智化转型：人工智能的金融实践", url: "https://www.dedao.cn/ebook/detail?id=XOnaYG1qlM7amvGYerDZOy9JVnXL40BoYVzWBkp1NKxoRdb86P2Q5AzgEj9vE5rD" },
+        { title: "[BOOK] 专注力的技术", url: "https://book.douban.com/subject/35074482/" }
+    ];
+
+    // --- 1. Matrix Background ---
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
 
@@ -308,73 +378,66 @@ hide:
     }
     setInterval(drawMatrix, 50);
 
-
-    // --- 2. Terminal System ---
+    // --- 2. Terminal Logic ---
     const input = document.getElementById('term-input');
     const display = document.getElementById('input-display');
     const outputArea = document.getElementById('terminal-output-area');
     const inputContainer = document.getElementById('input-line-container');
-    const cursorBlock = document.querySelector('.cursor-block');
+    const termHeader = document.getElementById('term-header');
     
     document.getElementById('session-id').innerText = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
 
-    // Input handling
-    const focusInput = () => {
-        // Prevent scroll jump by saving position? 
-        // Actually fixing CSS 'top: -9999px' to 'position: absolute' in container solves most jumps.
-        input.focus({ preventScroll: true }); 
-    };
+    // State
+    let isIntroMode = true;
+    
+    const focusInput = () => { if(!isIntroMode) input.focus({ preventScroll: true }); };
     document.addEventListener('click', focusInput);
     inputContainer.addEventListener('click', focusInput);
 
-    input.addEventListener('input', () => {
-        display.textContent = input.value;
-    });
+    input.addEventListener('input', () => { display.textContent = input.value; });
 
-    // Output Templates
+    // Command Outputs
+    const getBlogList = () => {
+        let html = `<div><b>[BLOG POSTS]</b></div>`;
+        BLOGS.forEach(b => {
+            html += `<div class="term-list-item"><span class="term-list-marker">></span><a href="${b.path}">${b.title}</a></div>`;
+        });
+        return html;
+    };
+
+    const getPubs = () => {
+        let html = `<div>`;
+        PUBLICATIONS.forEach(p => {
+            html += `<div class="term-list-item"><span class="term-list-marker">></span><a href="${p.url}"><b>${p.title}</b></a></div>`;
+        });
+        html += `</div>`;
+        return html;
+    };
+
     const outputs = {
         help: () => `
             <table style="width:100%">
-                <tr><td style="width:120px">help</td><td>Show this help message</td></tr>
-                <tr><td>whois [user]</td><td>Display user profile</td></tr>
-                <tr><td>list [type]</td><td>List items (music, books, publications)</td></tr>
-                <tr><td>cat [file]</td><td>View file content</td></tr>
-                <tr><td>clear</td><td>Clear terminal screen</td></tr>
-                <tr><td>blog</td><td>Navigate to blog index</td></tr>
+                <tr><td style="width:120px">help</td><td>Show this help</td></tr>
+                <tr><td>whois</td><td>Display profile</td></tr>
+                <tr><td>blog</td><td>List blog posts</td></tr>
+                <tr><td>list [type]</td><td>List items (music, books, pubs)</td></tr>
+                <tr><td>clear</td><td>Clear screen</td></tr>
             </table>`,
         
         whois: () => `
-            Name: Jiaji Deng (邓佳佶)<br>
-            Role: Researcher @ Tongyi Lab, Alibaba<br>
-            Education: PKU B.S. Math & Finance → USC M.S. Mathematical Finance<br>
-            Interests: Agent Systems, Agentic RL, FinTech<br>
-            Email: dengjiaji@gmail.com<br>
+            Name: ${PROFILE.name}<br>
+            Role: ${PROFILE.role}<br>
+            Education: ${PROFILE.edu}<br>
+            Interests: ${PROFILE.interests}<br>
+            Email: ${PROFILE.email}<br>
             `,
-
             
         evotraders: () => `
             <h6>[ PROJECT: EvoTraders ]</h6>
-            <div style="margin-bottom: 10px; color: #444;">"AI agents trading as a team, not solo players."</div>
+            <div style="margin-bottom: 10px; color: #444;">"AI agents trading as a team."</div>
             <div>
-                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Multi-Agent Collaboration</b>: Data + Strategy + Risk Agents</div></div>
-                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Memory Evolution</b>: Powered by ReMe for continuous learning</div></div>
-                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Real-Time Execution</b>: Live market interaction via AgentScope</div></div>
-            </div>`,
-            
-        publications: () => `
-            <div>
-                <div class="term-list-item">
-                    <span class="term-list-marker">></span>
-                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=hI2BbTMAAAAJ"><b>[PROFILE] Google Scholar</b></a>
-                </div>
-                <div class="term-list-item">
-                    <span class="term-list-marker">></span>
-                    <a href="https://www.dedao.cn/ebook/detail?id=XOnaYG1qlM7amvGYerDZOy9JVnXL40BoYVzWBkp1NKxoRdb86P2Q5AzgEj9vE5rD"><b>[BOOK] 数智化转型：人工智能的金融实践</b></a>
-                </div>
-                <div class="term-list-item">
-                    <span class="term-list-marker">></span>
-                    <a href="https://book.douban.com/subject/35074482/"><b>[BOOK] 专注力的技术</b></a>
-                </div>
+                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Multi-Agent</b>: Data + Strategy + Risk Agents</div></div>
+                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Memory</b>: Powered by ReMe</div></div>
             </div>`,
             
         music: () => `
@@ -384,51 +447,40 @@ hide:
             </div>`
     };
 
-    // Execution Logic
     const executeCommand = (cmdStr) => {
         const args = cmdStr.trim().split(' ');
         const cmd = args.shift().toLowerCase();
         
         if (cmd === 'help') return outputs.help();
-        if (cmd === 'whois') return outputs.whois();
-        if (cmd === 'whoami') return outputs.whois(); // alias
+        if (cmd === 'whois' || cmd === 'whoami') return outputs.whois();
         if (cmd === 'clear') { outputArea.innerHTML = ''; return null; }
-        if (cmd === 'hello') return `Hello! Nice to meet you.<br>Try: <span class="tag">list music</span>`;
-        if (cmd === 'blog') {
-            setTimeout(() => window.location.href = "blog/", 800);
-            return "Redirecting...";
-        }
-        
+        if (cmd === 'blog') return getBlogList();
         if (cmd === 'list') {
             const type = args[0] ? args[0].toLowerCase() : '';
-            if (type === 'books' || type === 'publications') return outputs.publications();
+            if (type === 'books' || type === 'publications' || type === 'pubs') return getPubs();
             if (type === 'music') return outputs.music();
             return "Usage: list [books|music|publications]";
         }
-        
         if (cmd === 'cat') {
-            const file = args[0];
-            if (file && file.includes('current_project')) return outputs.evotraders();
-            if (file === 'about.md') return outputs.whois();
-            return `cat: ${file || ''}: No such file`;
+            if (args[0] && args[0].includes('current_project')) return outputs.evotraders();
+            return `cat: ${args[0] || ''}: Permission denied or file missing`;
         }
-        
+        if (cmd === '') return null;
         return `zsh: command not found: ${cmd}`;
     };
 
-    // Handle User Enter
+    // Handle Enter
     input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             const rawInput = this.value;
             if (!rawInput.trim()) return;
             
-            // Add to history
+            // Add history
             const historyEntry = document.createElement('div');
             historyEntry.className = 'command-history-item';
             const safeInput = rawInput.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             historyEntry.innerHTML = `<div><span class="prompt">➜  ~</span> <span class="user-input-text">${safeInput}</span></div>`;
             
-            // Execute
             const outputHtml = executeCommand(rawInput);
             
             if (outputHtml !== null) {
@@ -442,48 +494,236 @@ hide:
             this.value = '';
             display.textContent = '';
             
-            // Scroll to bottom (using requestAnimationFrame to ensure DOM updated)
+            // Keep scroll at bottom
+            const termBody = document.querySelector('.term-body');
             requestAnimationFrame(() => {
-                 window.scrollTo(0, document.body.scrollHeight);
+                termBody.scrollTop = termBody.scrollHeight;
             });
         }
     });
 
-
-    // --- 3. Typewriter Sequence for Intro ---
-    // This simulates the user typing commands upon page load
+    // --- 3. Intro Sequence ---
     
-    const typeWriterQueue = [
-        { text: "cat current_project.md | grep 'EvoTraders' -A 5", delay: 800 },
+    async function typeText(text, speed = 100, clear = false, className = 'intro-text') {
+        if (clear) outputArea.innerHTML = '';
+        const line = document.createElement('div');
+        line.className = className;
+        outputArea.appendChild(line);
+        
+        for (let i = 0; i < text.length; i++) {
+            line.textContent += text[i];
+            await new Promise(r => setTimeout(r, speed));
+        }
+        return line;
+    }
+
+    async function askMatrixQuestion() {
+        isIntroMode = true;
+        input.disabled = true;
+        document.getElementById('input-area-wrapper').style.display = 'none';
+        termHeader.style.opacity = '0';
+        
+        await new Promise(r => setTimeout(r, 500));
+        await typeText("Do you know MATRIX?", 80, true);
+        await new Promise(r => setTimeout(r, 500));
+        
+        const choiceDiv = document.createElement('div');
+        choiceDiv.style.marginTop = '20px';
+        choiceDiv.innerHTML = `
+            <div style="display: flex; gap: 30px; align-items: center;">
+                <span class="prompt">➜</span>
+                <span class="choice-link" onclick="answerMatrix(true)">YES</span>
+                <span style="color: #666;">/</span>
+                <span class="choice-link" onclick="answerMatrix(false)">NO</span>
+            </div>
+        `;
+        outputArea.appendChild(choiceDiv);
+    }
+    
+    window.answerMatrix = async (knowsMatrix) => {
+        outputArea.innerHTML = '';
+        if (knowsMatrix) {
+            await runIntro();
+        } else {
+            enterTerminal();
+        }
+    };
+
+    async function runIntro() {
+        await new Promise(r => setTimeout(r, 300));
+        await typeText("Wake up, Neo...", 150, true);
+        await new Promise(r => setTimeout(r, 2000));
+        
+        await typeText("The Matrix has you...", 100, true);
+        await new Promise(r => setTimeout(r, 2000));
+        
+        await typeText("Follow the white rabbit.", 100, true);
+        await new Promise(r => setTimeout(r, 1000));
+        
+        const rabbitDiv = document.createElement('div');
+        rabbitDiv.className = 'rabbit-container';
+        rabbitDiv.innerHTML = `   \\ /\n  ( . .)\n  (")(")`; 
+        rabbitDiv.onclick = () => {
+            outputArea.innerHTML = '';
+            showKnockKnock();
+        };
+        outputArea.appendChild(rabbitDiv);
+    }
+    
+    async function showKnockKnock() {
+        await typeText("Knock, knock...", 200, true);
+        await new Promise(r => setTimeout(r, 1000));
+        showPills();
+    }
+    
+    function showPills() {
+        outputArea.innerHTML = '';
+        const choiceDiv = document.createElement('div');
+        choiceDiv.style.marginTop = '40px';
+        choiceDiv.innerHTML = `
+            <div class="pill-quote">
+                "This is your last chance. After this, there is no turning back.<br>
+                You take the blue pill—the story ends. You take the red pill—you stay in Wonderland."
+            </div>
+            <div class="pill-container">
+                <span class="pill pill-blue" onclick="choosePill('blue')">blue pill</span>
+                <span class="pill pill-red" onclick="choosePill('red')">red pill</span>
+            </div>
+        `;
+        outputArea.appendChild(choiceDiv);
+    }
+    
+    window.choosePill = async (color) => {
+        outputArea.innerHTML = '';
+        if (color === 'blue') {
+            await typeText("There is no one here...", 50);
+            await new Promise(r => setTimeout(r, 2000));
+            showPills();
+        } else {
+            await typeText("Welcome to the desert of the real.", 50);
+            await new Promise(r => setTimeout(r, 1000));
+            enterTerminal();
+        }
+    };
+    
+    async function enterTerminal() {
+        outputArea.innerHTML = '';
+        isIntroMode = true;
+        input.disabled = true;
+        document.getElementById('input-area-wrapper').style.display = 'none';
+        termHeader.style.opacity = '1';
+        termHeader.querySelector('span').textContent = 'user@tongyi-lab:~';
+        
+        // ASCII art as raw text for typing
+        const asciiArt = `   ____  ____   ____  ____  ____      ___      ___  ____    ____ 
+ |    ||    | /    ||    ||    |    |   \\    /  _]|    \\  /    |
+ |__  | |  | |  o  ||__  | |  |     |    \\  /  [_ |  _  ||   __|
+ __|  | |  | |     |__|  | |  |     |  D  ||    _]|  |  ||  |  |
+/  |  | |  | |  _  /  |  | |  |     |     ||   [_ |  |  ||  |_ |
+\\     | |  | |  |  \\     | |  |     |     ||     ||  |  ||     |
+ \\____||____||__|__|\\____||____|    |_____||_____||__|__||_____|`;
+        
+        // Display ASCII art directly
+        const artDiv = document.createElement('div');
+        artDiv.className = 'ascii-art';
+        artDiv.textContent = asciiArt;
+        outputArea.appendChild(artDiv);
+        
+        // Display quote directly
+        const quoteDiv = document.createElement('div');
+        quoteDiv.className = 'intro-text';
+        quoteDiv.textContent = PROFILE.intro_quote;
+        outputArea.appendChild(quoteDiv);
+        await new Promise(r => setTimeout(r, 500));
+        
+        const helpDiv = document.createElement('div');
+        helpDiv.innerHTML = '<div>Type <span class="tag">help</span> to see available commands.</div>';
+        outputArea.appendChild(helpDiv);
+        
+        await new Promise(r => setTimeout(r, 800));
+        
+        // Now enable terminal
+        isIntroMode = false;
+        input.disabled = false;
+        document.getElementById('input-area-wrapper').style.display = 'block';
+        
+        // Run initial whois with typing effect
+        await typeCommand('whois jiaji');
+        
+        input.focus();
+        
+        // Start Auto-Type Sequences
+        runAutoCommands();
+    }
+    
+    async function typeCommand(cmdStr) {
+        // Show command being typed
+        const historyEntry = document.createElement('div');
+        historyEntry.className = 'command-history-item';
+        const cmdDisplay = document.createElement('div');
+        cmdDisplay.innerHTML = `<span class="prompt">➜  ~</span> <span class="user-input-text"></span>`;
+        historyEntry.appendChild(cmdDisplay);
+        outputArea.appendChild(historyEntry);
+        
+        const userInputSpan = cmdDisplay.querySelector('.user-input-text');
+        for (let i = 0; i < cmdStr.length; i++) {
+            userInputSpan.textContent += cmdStr[i];
+            await new Promise(r => setTimeout(r, 40));
+        }
+        
+        await new Promise(r => setTimeout(r, 300));
+        
+        // Execute and show output
+        const outputHtml = executeCommand(cmdStr);
+        if (outputHtml !== null) {
+            const outputDiv = document.createElement('div');
+            outputDiv.className = 'cmd-output';
+            outputDiv.innerHTML = outputHtml;
+            historyEntry.appendChild(outputDiv);
+        }
+        
+        const termBody = document.querySelector('.term-body');
+        termBody.scrollTop = termBody.scrollHeight;
+    }
+    
+    // --- 4. Auto-Type Commands Sequence ---
+    const autoCmdQueue = [
+        { text: "cat current_project.md | grep 'EvoTraders' -A 5", delay: 1000 },
         { text: "list publications", delay: 1500 },
         { text: "list music", delay: 1500 }
     ];
 
-    async function runTypewriter() {
-        // Disable user input during animation
-        input.disabled = true;
-        cursorBlock.style.display = 'none'; // Use our fake cursor for animation if we wanted, 
-                                            // but simpler to just update the display span
-        
-        for (const item of typeWriterQueue) {
+    async function runAutoCommands() {
+        // Wait a bit after initial load
+        await new Promise(r => setTimeout(r, 1000));
+
+        for (const item of autoCmdQueue) {
+            // Wait before starting typing this command
             await new Promise(r => setTimeout(r, item.delay));
             
-            // Type text char by char
-            for (let i = 0; i <= item.text.length; i++) {
-                display.textContent = item.text.substring(0, i);
-                // Scroll to bottom as we type
-                window.scrollTo(0, document.body.scrollHeight); 
+            // Simulate typing
+            const cmd = item.text;
+            for (let i = 0; i <= cmd.length; i++) {
+                // Check if user interrupted by typing? (Optional: skip if user types)
+                // For now, just overwrite display. But to be safe, if input.value is not empty, we pause or skip.
+                if (input.value.length > 0) return; // Stop if user interacts
+
+                display.textContent = cmd.substring(0, i);
+                // Force scroll
+                const termBody = document.querySelector('.term-body');
+                termBody.scrollTop = termBody.scrollHeight;
+                
                 await new Promise(r => setTimeout(r, Math.random() * 30 + 30));
             }
             
-            await new Promise(r => setTimeout(r, 300)); // Pause before enter
+            await new Promise(r => setTimeout(r, 300)); // Pause at end of line
             
-            // Simulate Enter
+            // Execute
             const historyEntry = document.createElement('div');
             historyEntry.className = 'command-history-item';
-            historyEntry.innerHTML = `<div><span class="prompt">➜  ~</span> <span class="user-input-text">${item.text}</span></div>`;
+            historyEntry.innerHTML = `<div><span class="prompt">➜  ~</span> <span class="user-input-text">${cmd}</span></div>`;
             
-            const outputHtml = executeCommand(item.text);
+            const outputHtml = executeCommand(cmd);
             if (outputHtml !== null) {
                 const outputDiv = document.createElement('div');
                 outputDiv.className = 'cmd-output';
@@ -493,16 +733,13 @@ hide:
             }
             
             display.textContent = '';
-            window.scrollTo(0, document.body.scrollHeight);
+            
+            const termBody = document.querySelector('.term-body');
+            termBody.scrollTop = termBody.scrollHeight;
         }
-        
-        // Re-enable user input
-        input.disabled = false;
-        input.focus({ preventScroll: true });
-        cursorBlock.style.display = 'inline-block';
     }
 
-    // Start sequence
-    window.addEventListener('load', runTypewriter);
+    // Start
+    window.addEventListener('load', askMatrixQuestion);
 
 </script>
