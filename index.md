@@ -390,7 +390,11 @@ hide:
     // State
     let isIntroMode = true;
     
-    const focusInput = () => { if(!isIntroMode) input.focus({ preventScroll: true }); };
+    const focusInput = (e) => { 
+        // Don't interfere with link clicks
+        if (e.target.tagName === 'A') return;
+        if(!isIntroMode) input.focus({ preventScroll: true }); 
+    };
     document.addEventListener('click', focusInput);
     inputContainer.addEventListener('click', focusInput);
 
@@ -433,11 +437,12 @@ hide:
             `,
             
         evotraders: () => `
-            <h6>[ PROJECT: EvoTraders ]</h6>
+            <h6><a href="http://trading.evoagents.cn" target="_blank" rel="noopener noreferrer">[ PROJECT: EvoTraders ]</a></h6>
             <div style="margin-bottom: 10px; color: #444;">"AI agents trading as a team."</div>
             <div>
-                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Multi-Agent</b>: Data + Strategy + Risk Agents</div></div>
-                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Memory</b>: Powered by ReMe</div></div>
+                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Multi-Agent design</b>: Multi-Agent Collaborative Trading</div></div>
+                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Continuous Learning and Evolution</b>: Powered by ReMe</div></div>
+                <div class="term-list-item"><span class="term-list-marker">[+]</span><div><b>Real-Time Market Trading</b>: Real-time market data integration, providing backtesting mode and live trading mode</div></div>
             </div>`,
             
         music: () => `
