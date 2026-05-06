@@ -161,6 +161,9 @@ hide:
     <h2 id="writing">Writing</h2>
     <ul class="home-list">
       <li><a href="blog/2025-11-19/">Proactive Agents</a> <span class="home-meta">Notes on triggers, scheduling, and long-running agent systems</span></li>
+      <li><a href="blog/2026-01-16-无生命的智能-1/">无生命的智能（一）：智力服务与智能生命</a></li>
+      <li><a href="blog/2026-01-30-无生命的智能-2/">无生命的智能（二）：当智能成为基础设施</a></li>
+      <li><a href="blog/2026-03-23-无生命的智能-3/">无生命的智能（三）：消失的未来</a></li>
     </ul>
   </section>
 
