@@ -26,7 +26,7 @@ hide:
     display: grid;
     grid-template-columns: 96px 1fr;
     gap: 24px;
-    align-items: center;
+    align-items: start;
     margin-bottom: 40px;
   }
 
@@ -60,32 +60,25 @@ hide:
     line-height: 1.75;
   }
 
-  .home-section {
-    padding: 28px 0;
-    border-top: 1px solid #e5e7eb;
-  }
-
-  .home-section h2 {
+  .home > h2 {
     margin: 0 0 14px;
+    padding-top: 28px;
+    border-top: 1px solid #e5e7eb;
     color: #111827;
     font-size: 1.16rem;
     line-height: 1.3;
     letter-spacing: 0;
   }
 
-  .home-list {
+  .home > ul {
     margin: 0;
     padding-left: 1.1rem;
     color: #374151;
     line-height: 1.75;
   }
 
-  .home-list li + li {
+  .home > ul li + li {
     margin-top: 8px;
-  }
-
-  .home-meta {
-    color: #64748b;
   }
 
   .home-links {
@@ -119,7 +112,8 @@ hide:
   }
 </style>
 
-<main class="home">
+<main class="home" markdown="1">
+
   <header class="home-hero">
     <img class="home-avatar" src="figure/icon.jpg" alt="Jiaji Deng profile image">
     <div>
@@ -138,41 +132,17 @@ hide:
     </div>
   </header>
 
-  <section class="home-section" aria-labelledby="research-interests">
-    <h2 id="research-interests">Research Interests</h2>
-    <ul class="home-list">
-      <li>Agent systems and proactive agents</li>
-      <li>Agentic reinforcement learning</li>
-      <li>Financial technology and market-facing AI systems</li>
-    </ul>
-  </section>
+## Research Interests
 
-  <section class="home-section" aria-labelledby="selected-work">
-    <h2 id="selected-work">Selected Work</h2>
-    <ul class="home-list">
-      <li><a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=hI2BbTMAAAAJ">Google Scholar profile</a></li>
-      <li><a href="http://trading.evoagents.cn">EvoTraders</a> <span class="home-meta">AI agents trading as a team</span></li>
-      <li><a href="https://www.dedao.cn/ebook/detail?id=XOnaYG1qlM7amvGYerDZOy9JVnXL40BoYVzWBkp1NKxoRdb86P2Q5AzgEj9vE5rD">数智化转型：人工智能的金融实践</a></li>
-      <li><a href="https://book.douban.com/subject/35074482/">专注力的技术</a></li>
-    </ul>
-  </section>
+- Agent systems and proactive agents
+- Agentic reinforcement learning
+- Financial technology and market-facing AI systems
 
-  <section class="home-section" aria-labelledby="writing">
-    <h2 id="writing">Writing</h2>
-    <ul class="home-list">
-      <li><a href="blog/2025-11-19/">Proactive Agents</a> <span class="home-meta">Notes on triggers, scheduling, and long-running agent systems</span></li>
-      <li><a href="blog/2026-01-16-无生命的智能-1/">无生命的智能（一）：智力服务与智能生命</a></li>
-      <li><a href="blog/2026-01-30-无生命的智能-2/">无生命的智能（二）：当智能成为基础设施</a></li>
-      <li><a href="blog/2026-03-23-无生命的智能-3/">无生命的智能（三）：消失的未来</a></li>
-    </ul>
-  </section>
+## Selected Work
 
-  <section class="home-section" aria-labelledby="contact">
-    <h2 id="contact">Contact</h2>
-    <ul class="home-list">
-      <li>Email: <a href="mailto:dengjiaji@gmail.com">dengjiaji@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/Dengjiaji">github.com/Dengjiaji</a></li>
-      <li>Google Scholar: <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=hI2BbTMAAAAJ">Jiaji Deng</a></li>
-    </ul>
-  </section>
+- [Google Scholar profile](https://scholar.google.com/citations?hl=zh-CN&user=hI2BbTMAAAAJ)
+- [EvoTraders](http://trading.evoagents.cn) - AI agents trading as a team
+- [数智化转型：人工智能的金融实践](https://www.dedao.cn/ebook/detail?id=XOnaYG1qlM7amvGYerDZOy9JVnXL40BoYVzWBkp1NKxoRdb86P2Q5AzgEj9vE5rD)
+- [专注力的技术](https://book.douban.com/subject/35074482/)
+
 </main>
