@@ -1,0 +1,21 @@
+docs/index.md
+  s_7fba2ab9bb53a5::t_61d3980041d700 29,63,65-66,73,80,115-116,135-146
+mkdocs.yml
+  s_7fba2ab9bb53a5::t_61d3980041d700 20-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "5218a48582f7df7638032ab0f272e84e936874b9",
+  "prompts": {},
+  "sessions": {
+    "s_7fba2ab9bb53a5": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dfd86-a621-71d1-a55d-2fa9daee23d3",
+        "model": "gpt-5.5"
+      },
+      "human_author": "dengjiaji <dengjiaji.djj@alibaba-inc.com>"
+    }
+  }
+}
