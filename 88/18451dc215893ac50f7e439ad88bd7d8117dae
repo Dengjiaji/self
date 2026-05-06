@@ -1,0 +1,34 @@
+docs/blog/2026-03-23-无生命的智能-3.md
+  s_cfab3f166c473a::t_ce9e498d5ee7a1 2-6,8-38,40-62,64-89,91-117
+  s_cfab3f166c473a::t_6d60a4be881fb7 1,7,39,63,90,118
+docs/blog/2026-01-16-无生命的智能-1.md
+  s_cfab3f166c473a::t_aa1b2a39c2ad26 13,26,33,42,56
+  s_cfab3f166c473a::t_6d60a4be881fb7 1,4,6,15,28,35,44,48-52,58,72
+  s_cfab3f166c473a::t_ce9e498d5ee7a1 2-3,5,7-12,14,16-25,27,29-32,34,36-41,43,45-47,53-55,57,59-71
+docs/blog/index.md
+  s_cfab3f166c473a::t_e3c2b102beab18 3-6
+  s_cfab3f166c473a::t_aa1b2a39c2ad26 1-2
+docs/blog/2026-01-30-无生命的智能-2.md
+  s_cfab3f166c473a::t_6d60a4be881fb7 1,9,11,25,31-35,45,55,57,67,87,89,95-97,101,125,133-135,141,157
+  s_cfab3f166c473a::t_ce9e498d5ee7a1 2-8,10,12-24,26-30,36-44,46-54,56,58-66,68-86,88,90-94,98-100,102-124,126-132,136-140,142-156,158-173
+docs/index.md
+  s_cfab3f166c473a::t_aa1b2a39c2ad26 164-166
+mkdocs.yml
+  s_cfab3f166c473a::t_aa1b2a39c2ad26 21,23-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8818451dc215893ac50f7e439ad88bd7d8117dae",
+  "prompts": {},
+  "sessions": {
+    "s_cfab3f166c473a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dfd5a-8947-75f0-9c0f-e1c652d013b8",
+        "model": "gpt-5.5"
+      },
+      "human_author": "dengjiaji <dengjiaji.djj@alibaba-inc.com>"
+    }
+  }
+}
