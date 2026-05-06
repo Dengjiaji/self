@@ -1,4 +1,4 @@
-site_name: DENGJIAJI ✦ BLOG
+site_name: Jiaji Deng
 site_url: https://dengjiaji.github.io/self/
 site_description: "dengjiaji's blog"
 repo_url: https://github.com/Dengjiaji
@@ -8,7 +8,7 @@ theme:
   name: shadcn
   image: figure/icon.jpg
   show_stargazers: true
-  locale: zh_CN
+  locale: en
   show_datetime: true
 
 plugins:
@@ -16,10 +16,9 @@ plugins:
   - excalidraw
 
 nav:
-  - about me: index.md
-  - blog:
-      # - Archives: blog/index.md
-      - Proactive Agents : blog/2025-11-19.md
+  - Home: index.md
+  - Writing:
+      - Proactive Agents: blog/2025-11-19.md
 
 markdown_extensions:
   admonition:
