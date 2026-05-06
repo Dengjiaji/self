@@ -1,0 +1,21 @@
+mkdocs.yml
+  s_cfab3f166c473a::t_dec0434106d545 1,11,19-21,45
+docs/index.md
+  s_cfab3f166c473a::t_f1cbae9498cfcd 8-119,122-137,139-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8846b407e5c0f24cf48761808e96051799452c7a",
+  "prompts": {},
+  "sessions": {
+    "s_cfab3f166c473a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019dfd5a-8947-75f0-9c0f-e1c652d013b8",
+        "model": "gpt-5.5"
+      },
+      "human_author": "dengjiaji <dengjiaji.djj@alibaba-inc.com>"
+    }
+  }
+}
